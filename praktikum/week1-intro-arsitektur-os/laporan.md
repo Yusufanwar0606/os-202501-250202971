@@ -49,14 +49,31 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
-
+1. Jelaskan makna hasil percobaan.
+  **Jawaban:** makna dari :
+   - uname -a yaitu menunjukkan identitas lengkap sistem kernel Linux, mencerminkan "siapa" dan "bagaimana" OS berjalan, seperti versi inti yang menentukan fitur dan kompatibilitas
+   - lsmod | head yaitu mewakili "ekstensi hidup" kernel, di mana modul adalah bagian modular yang dimuat untuk fungsi tambahan, menandakan fleksibilitas arsitektur monolithic/modular.
+   - dmesg | head yaitu rekaman komunikasi internal dengan hardware dan proses, mengungkap dinamika boot dan runtime untuk diagnosis mendalam.
+  
+2. Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).
+   **Jawaban:**
+   - Fungsi Kernel: Hasil seperti scheduling proses mencerminkan manajemen CPU/memori/I/O kernel untuk efisiensi dan isolasi, sesuai teori multitasking aman.
+   - System Call: Pemanggilan (e.g., fork()) menunjukkan transisi user-to-kernel mode via syscall table, validasi teori akses privileged resources dengan overhead minimal.
+   - Arsitektur OS: Hasil performa tinggi di monolithic (Linux) vs modular di microkernel (Minix) mengilustrasikan trade-off teori: kecepatan vs keandalan.
+3. Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?
+  **Jawaban:**
+   - Arsitektur: Linux (monolithic modular) hasil cepat/low-overhead sedangkan Windows (hybrid) lebih kompleks dengan overhead tinggi.
+   - System Call: Linux (POSIX, strace mudah) sedangkan Windows (Win32 API, tersembunyi di ntdll, tracing sulit).
+   - Performa/Keamanan: Linux konsisten untuk server, fleksibel modifikasi sedangkan Windows stabil desktop, ketat keamanan tapi closed-source.
+   - Tools: Linux (source terbuka, compile mudah) sedangkan Windows (WDK/WSL terbatas, proprietary). Linux lebih cocok praktikum akademik.
 ---
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum ini.
+   - OS berfungsi sebagai perantara antara user/aplikasi (user mode, terbatas) dengan hardware (via kernel mode, privilese penuh), menggunakan system call sebagai mekanisme transisi aman. Komponen utama seperti kernel, device driver, dan file system memastikan efisiensi dan proteksi, seperti terlihat di eksperimen Linux (uname -a, lsmod, dmesg) yang menampilkan modul kernel dinamis.
+
+   - Monolithic kernel (Linux, Windows) efisien dan cepat tapi rentan bug; layered approach (THE OS) lebih terstruktur dengan overhead; microkernel (Minix, QNX) modular dan aman tapi lambat. Untuk sistem modern, monolithic hybrid seperti Linux paling relevan karena seimbang performa, skalabilitas (server/cloud), dan adaptasi hardware.
+
+   - Praktikum ini menekankan evolusi OS untuk komputasi distributed, dengan diagram User → System Call → Kernel → Hardware sebagai visualisasi sederhana. Hasil eksperimen memperkuat bahwa OS seperti Linux mendukung kebutuhan sehari-hari sambil prioritaskan isolasi dan keamanan.
 
 ---
 
