@@ -5,9 +5,9 @@ Topik: [Tuliskan judul topik, misalnya "Arsitektur Sistem Operasi dan Kernel"]
 ---
 
 ## Identitas
-- **Nama**  : [Nama Mahasiswa]  
-- **NIM**   : [NIM Mahasiswa]  
-- **Kelas** : [Kelas]
+- **Nama**  : Yusuf Anwar  
+- **NIM**   : 250202971  
+- **Kelas** : 1IKRB
 
 ---
 
@@ -60,19 +60,23 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 ---
 
 ## Quiz
-1. [Pertanyaan 1]  
-   **Jawaban:**  
-2. [Pertanyaan 2]  
-   **Jawaban:**  
-3. [Pertanyaan 3]  
-   **Jawaban:**  
+1. Sebutkan tiga fungsi utama sistem operasi. 
+   **Jawaban:** fungsi utamanya adalah mengatur eksekusi ,penjadwalan proses,mengalokasikan, melindungi ruang memori,mengontrol akses ke perangkat hardware.
+2. Jelaskan perbedaan antara kernel mode dan user mode. 
+   **Jawaban:**  Kernel Mode adalah akses penuh ke hardware (privileged), hanya untuk kernel OS. sedangkan User Mode adalah akses terbatas (non-privileged) untuk aplikasi; akses hardware via system call.
+
+3. Sebutkan contoh OS dengan arsitektur monolithic dan microkernel. 
+   **Jawaban:**  Monolithic: Linux, Unix .
+Microkernel: Minix, QNX.
 
 ---
 
 ## Refleksi Diri
 Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
-- Bagaimana cara Anda mengatasinya?  
+- Apa bagian yang paling menantang minggu ini?
+  **Jawaban:** mengirimkan tugas menggunakan git dan vs studio karena blm paham  
+- Bagaimana cara Anda mengatasinya?
+  **Jawaban:** mencari panduan di youtube agar bisa paham menggunakannya
 
 ---
 
