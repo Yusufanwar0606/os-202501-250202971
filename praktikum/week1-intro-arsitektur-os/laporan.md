@@ -44,7 +44,7 @@ dmesg | head
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![alt text](<screenshots/Screenshot .png>)
+![alt text](<screenshots/Screenshot 2025-10-11 200914.png>)
 
 ---
 
