@@ -20,7 +20,11 @@ Mahasiswa mampu :
 ---
 
 ## Dasar Teori
-Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
+1.	OS berperan sebagai perantara antara pengguna/aplikasi dengan hardware, menyediakan abstraksi sumber daya seperti proses, memori, dan I/O. Komponen utama meliputi kernel (inti pengelolaan), system call (panggilan untuk akses privilese), device driver (interaksi hardware), dan file system (pengelolaan data). Teori ini mendasari percobaan untuk mengamati bagaimana OS seperti Linux mengintegrasikan elemen-elemen ini secara efisien.
+2.	Kernel mode memberikan akses penuh ke hardware (privilese tinggi, tapi berisiko), sementara user mode membatasi aplikasi untuk mencegah kesalahan merusak sistem (keamanan melalui isolasi). Transisi antar mode dilakukan via system call, seperti fork() atau read(). Percobaan menggunakan perintah seperti whoami untuk mengilustrasikan konteks user mode dalam interaksi sehari-hari.
+3.	System call adalah antarmuka standar yang memungkinkan program user-space meminta layanan kernel tanpa akses langsung hardware, menjaga integritas sistem. Di Linux, ini didukung oleh API seperti POSIX. Teori ini relevan dengan percobaan untuk memahami bagaimana perintah terminal (misalnya, lsmod) berinteraksi dengan kernel melalui system call, menghasilkan output informasi tanpa mengganggu mode eksekusi.
+4.	Kernel monolithic (seperti Linux) mengintegrasikan semua layanan dalam satu ruang alamat untuk performa tinggi, tapi rentan bug; dibedakan dengan layered (bertumpuk) atau microkernel (modular di user space). Linux menggunakan modul kernel loadable (LKM) untuk fleksibilitas, seperti driver USB. Percobaan dengan uname -a (versi kernel), lsmod (modul aktif), dan dmesg (log boot) mengonfirmasi teori ini, menunjukkan bagaimana kernel monolithic beradaptasi dinamis dengan hardware.
+
 
 ---
 
