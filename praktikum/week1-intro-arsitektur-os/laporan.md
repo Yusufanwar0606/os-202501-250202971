@@ -92,7 +92,7 @@ Microkernel: Minix, QNX.
 ## Refleksi Diri
 Tuliskan secara singkat:
 - Apa bagian yang paling menantang minggu ini?
-  **Jawaban:** mengirimkan tugas menggunakan git dan vs studio karena blm paham  
+  **Jawaban:** mengirimkan tugas menggunakan git dan vs code karena blm paham  
 - Bagaimana cara Anda mengatasinya?
   **Jawaban:** mencari panduan di youtube agar bisa paham menggunakannya
 
