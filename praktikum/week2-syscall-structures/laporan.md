@@ -12,15 +12,55 @@
 ---
 
 ## Tujuan
-- mahasiswa memahami apa itu system call, yaitu mekanisme yang memungkinkan program di mode user (user space) untuk meminta layanan dari kernel (kernel space).
-- Mahasiswa belajar tentang struktur internal system call, seperti bagaimana system call dipanggil melalui instruksi khusus, dan bagaimana proses perpindahan dari mode user ke mode kernel terjadi.
-- Mahasiswa dapat Mengeksplorasi fungsi-fungsi kernel yang mendukung system call, seperti handler interrupt, scheduler, atau memory management.
-- Melalui latihan hands-on, seperti menulis program sederhana dalam bahasa C atau C++ yang menggunakan system call (contoh: membuat program yang membaca file menggunakan open() dan read()), mahasiswa dapat menerapkan teori secara langsung.
-
+Setelah menyelesaikan tugas ini, mahasiswa mampu:
+1. Menjelaskan konsep dan fungsi system call dalam sistem operasi.
+2. Mengidentifikasi jenis-jenis system call dan fungsinya.
+3. Mengamati alur perpindahan mode user ke kernel saat system call terjadi.
+4. Menggunakan perintah Linux untuk menampilkan dan menganalisis system call.
 ---
 
 ## Dasar Teori
-Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
+1. **Setup Environment**
+   - Gunakan Linux (Ubuntu/WSL).
+   - Pastikan perintah `strace` dan `man` sudah terinstal.
+   - Konfigurasikan Git (jika belum dilakukan di minggu sebelumnya).
+
+2. **Eksperimen 1 – Analisis System Call**
+   Jalankan perintah berikut:
+   ```bash
+   strace ls
+   ```
+   > Catat 5–10 system call pertama yang muncul dan jelaskan fungsinya.  
+   Simpan hasil analisis ke `results/syscall_ls.txt`.
+
+3. **Eksperimen 2 – Menelusuri System Call File I/O**
+   Jalankan:
+   ```bash
+   strace -e trace=open,read,write,close cat /etc/passwd
+   ```
+   > Analisis bagaimana file dibuka, dibaca, dan ditutup oleh kernel.
+
+4. **Eksperimen 3 – Mode User vs Kernel**
+   Jalankan:
+   ```bash
+   dmesg | tail -n 10
+   ```
+   > Amati log kernel yang muncul. Apa bedanya output ini dengan output dari program biasa?
+
+5. **Diagram Alur System Call**
+   - Buat diagram yang menggambarkan alur eksekusi system call dari program user hingga kernel dan kembali lagi ke user mode.
+   - Gunakan draw.io / mermaid.
+   - Simpan di:
+     ```
+     praktikum/week2-syscall-structure/screenshots/syscall-diagram.png
+     ```
+
+6. **Commit & Push**
+   ```bash
+   git add .
+   git commit -m "Minggu 2 - Struktur System Call dan Kernel Interaction"
+   git push origin main
+   ```
 
 ---
 
