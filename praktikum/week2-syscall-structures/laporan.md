@@ -1,20 +1,21 @@
 
 # Laporan Praktikum Minggu [X]
-Topik: [Tuliskan judul topik, misalnya "Arsitektur Sistem Operasi dan Kernel"]
+**Topik: struktur system call dan fungsi Kernel**
 
 ---
 
 ## Identitas
-- **Nama**  : [Nama Mahasiswa]  
-- **NIM**   : [NIM Mahasiswa]  
-- **Kelas** : [Kelas]
+- **Nama**  : Yusuf Anwar  
+- **NIM**   : 250202971 
+- **Kelas** : 1IKRB
 
 ---
 
 ## Tujuan
-Tuliskan tujuan praktikum minggu ini.  
-Contoh:  
-> Mahasiswa mampu menjelaskan fungsi utama sistem operasi dan peran kernel serta system call.
+- mahasiswa memahami apa itu system call, yaitu mekanisme yang memungkinkan program di mode user (user space) untuk meminta layanan dari kernel (kernel space).
+- Mahasiswa belajar tentang struktur internal system call, seperti bagaimana system call dipanggil melalui instruksi khusus, dan bagaimana proses perpindahan dari mode user ke mode kernel terjadi.
+- Mahasiswa dapat Mengeksplorasi fungsi-fungsi kernel yang mendukung system call, seperti handler interrupt, scheduler, atau memory management.
+- Melalui latihan hands-on, seperti menulis program sederhana dalam bahasa C atau C++ yang menggunakan system call (contoh: membuat program yang membaca file menggunakan open() dan read()), mahasiswa dapat menerapkan teori secara langsung.
 
 ---
 
