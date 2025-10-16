@@ -20,6 +20,10 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 ---
 
 ## Dasar Teori
+
+---
+
+## Langkah Praktikum
 1. **Setup Environment**
    - Gunakan Linux (Ubuntu/WSL).
    - Pastikan perintah `strace` dan `man` sudah terinstal.
@@ -61,15 +65,7 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
    git commit -m "Minggu 2 - Struktur System Call dan Kernel Interaction"
    git push origin main
    ```
-
----
-
-## Langkah Praktikum
-1. Langkah-langkah yang dilakukan.  
-2. Perintah yang dijalankan.  
-3. File dan kode yang dibuat.  
-4. Commit message yang digunakan.
-
+   
 ---
 
 ## Kode / Perintah
