@@ -79,8 +79,14 @@ dmesg | head
 ---
 
 ## Hasil Eksekusi
-1. hasil eksperimen strace dan dmesg dalam bentuk tabel observasi.
-![Screenshot hasil](screenshots/example.png)
+1. hasil eksperimen :
+- strace
+![Screenshot hasil](screenshots/strace
+)   
+
+- dmesg
+![Screenshot hasil](screenshots/dmesg.png
+)
 2. diagram alur system call 
 ![Screenshot hasil](screenshots/example.png)
 3. - System call merupakan jembatan penting antara program aplikasi di mode user dan kernel di mode kernel dalam sistem operasi Linux. Konsep system call memungkinkan aplikasi untuk meminta layanan kernel, seperti akses file, manajemen proses, atau interaksi perangkat keras, tanpa langsung mengaksesnya. Hal ini penting untuk keamanan OS karena system call mencegah program user dari akses langsung ke resource sensitif, yang bisa menyebabkan kerusakan atau serangan. Misalnya, jika program user bisa langsung memanipulasi memori kernel, itu bisa memicu crash sistem atau eksploitasi seperti buffer overflow. Oleh karena itu, system call bertindak sebagai lapisan proteksi, di mana kernel memvalidasi setiap permintaan sebelum dieksekusi.
@@ -105,25 +111,39 @@ dmesg | head
 ---
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum ini.
+- Pentingnya System Call dalam Sistem Operasi: System call berfungsi sebagai antarmuka aman antara program user dan kernel, memastikan akses terkontrol ke resource seperti file, proses, dan hardware. Praktikum ini menunjukkan bahwa tanpa system call, OS rentan terhadap risiko keamanan, dan pemahaman alur eksekusinya (dari user mode ke kernel mode) adalah kunci untuk pengembangan software yang stabil.
 
+- Keterampilan Praktis yang Diperoleh: Melalui eksperimen seperti menggunakan strace dan dmesg, saya belajar menganalisis system call secara langsung, mengidentifikasi jenisnya (e.g., file I/O, process management), dan membuat diagram alur untuk visualisasi. Hal ini meningkatkan kemampuan debugging dan pemahaman interaksi kernel di lingkungan Linux.
+
+- Aplikasi di Masa Depan: Praktikum ini menekankan bahwa konsep system call relevan untuk memastikan keamanan dan efisiensi OS, yang bisa diterapkan dalam pengembangan aplikasi, troubleshooting sistem, atau studi lanjut tentang kernel. Secara keseluruhan, ini memperkuat dasar pengetahuan saya tentang operasi sistem modern.
+  
 ---
 
 ## Quiz
-1. [Pertanyaan 1]  
+1. Apa fungsi utama system call dalam sistem operasi? 
+
+   **Jawaban:**  Fungsi utama system call adalah menyediakan antarmuka aman antara program aplikasi (mode user) dan kernel (mode kernel). System call memungkinkan aplikasi untuk meminta layanan seperti akses hardware, manajemen memori, atau I/O tanpa langsung mengakses resource sistem, sehingga menjaga integritas dan keamanan OS.
+2. Sebutkan 4 kategori system call yang umum digunakan. 
+
    **Jawaban:**  
-2. [Pertanyaan 2]  
-   **Jawaban:**  
-3. [Pertanyaan 3]  
-   **Jawaban:**  
+   - File Management: Seperti open(2), read(2), write(2), untuk operasi file dan direktori.
+   - Process Management: Seperti fork(2), execve(2), wait(2), untuk membuat, mengelola, dan menghentikan proses.
+   - Device Management: Seperti ioctl(2), untuk berinteraksi dengan perangkat keras seperti disk atau jaringan.
+   - Inter-Process Communication: Seperti socket(2), pipe(2), untuk komunikasi antar-proses atau jaringan.
+3. Mengapa system call tidak bisa dipanggil langsung oleh user program? 
+   **Jawaban:**  System call tidak bisa dipanggil langsung karena program user berjalan di mode user, yang memiliki akses terbatas untuk mencegah kerusakan sistem. Untuk memanggil system call, program harus menggunakan instruksi khusus seperti syscall atau interrupt, yang memicu CPU untuk beralih ke mode kernel. Ini memastikan kernel dapat memvalidasi permintaan terlebih dahulu, sehingga mencegah akses ilegal dan menjaga keamanan.
+
+
 
 ---
 
 ## Refleksi Diri
 Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
+- Apa bagian yang paling menantang minggu ini?
+**jawaban:** Saya juga kesulitan menganalisis output strace untuk mengidentifikasi system call spesifik, karena outputnya sangat detail dan memerlukan pemahaman konsep dasar kernel.
+  
 - Bagaimana cara Anda mengatasinya?  
-
+**Jawaban:** saya mempraktikkan perintah berulang kali (e.g., strace ls) dan mencatat 5–10 system call pertama dalam tabel, sambil membandingkannya dengan buku Operating System Concepts untuk penjelasan fungsi masing-masing.
 ---
 
 **Credit:**  
