@@ -80,7 +80,7 @@ dmesg | head
 
 ## Hasil Eksekusi
 1. hasil eksperimen strace dan dmesg dalam bentuk tabel observasi.
-![Screenshot hasil]
+![Screenshot hasil](screenshots/example.png)
 2. diagram alur system call 
 ![Screenshot hasil](screenshots/example.png)
 3. - System call merupakan jembatan penting antara program aplikasi di mode user dan kernel di mode kernel dalam sistem operasi Linux. Konsep system call memungkinkan aplikasi untuk meminta layanan kernel, seperti akses file, manajemen proses, atau interaksi perangkat keras, tanpa langsung mengaksesnya. Hal ini penting untuk keamanan OS karena system call mencegah program user dari akses langsung ke resource sensitif, yang bisa menyebabkan kerusakan atau serangan. Misalnya, jika program user bisa langsung memanipulasi memori kernel, itu bisa memicu crash sistem atau eksploitasi seperti buffer overflow. Oleh karena itu, system call bertindak sebagai lapisan proteksi, di mana kernel memvalidasi setiap permintaan sebelum dieksekusi.
