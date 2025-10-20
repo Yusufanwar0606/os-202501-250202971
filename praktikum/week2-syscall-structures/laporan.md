@@ -20,6 +20,11 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 ---
 
 ## Dasar Teori
+- System Call sebagai Antarmuka Aman: System call adalah mekanisme utama untuk interaksi antara program aplikasi (mode user) dan kernel (mode kernel), memungkinkan akses terkontrol ke resource sistem seperti file dan hardware, sambil mencegah akses langsung yang berisiko keamanan.
+- Fungsi Kernel dalam Sistem Operasi: Kernel bertindak sebagai inti OS yang menangani tugas kritis seperti manajemen memori, proses, dan I/O, memastikan stabilitas dan isolasi melalui mode privileged, dengan arsitektur seperti monolitik di Linux.
+- Alur Eksekusi System Call: Proses dimulai dari panggilan user, transisi ke kernel via trap instruction (e.g., syscall), validasi izin, eksekusi fungsi kernel, dan pengembalian hasil, didukung oleh context switch untuk keamanan.
+- Jenis System Call Utama: Termasuk file management (e.g., open, read), process management (e.g., fork, execve), device management (e.g., ioctl), dan inter-process communication (e.g., socket), yang relevan dengan eksperimen strace.
+- Hubungan dengan Eksperimen: Teori ini mendasari observasi di strace dan dmesg, di mana system call divisualisasikan sebagai transisi aman, menunjukkan peran kernel dalam mengelola operasi low-level untuk keamanan OS.
 
 ---
 
