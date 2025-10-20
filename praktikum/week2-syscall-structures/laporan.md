@@ -93,11 +93,36 @@ dmesg | head
 ## Analisis
 1. Hasil eksperimen ```strace``` dan ```dmesg``` dalam bentuk tabel observasi
    
-| Eksperimen | Perintah | Hasil Utama | Analisis Singkat |
-|------------|----------|-------------|------------------|
-| **Eksperimen 1: Analisis System Call dengan `strace ls`** | `strace ls` | - `execve("/bin/ls", ["ls"], 0x7ffd...) = 0`<br>- `arch_prctl(ARCH_SET_FS, 0x7f1c...) = 0`<br>- `brk(NULL) = 0x55b8...`<br>- `access("/etc/ld.so.nohwcap", F_OK) = -1 ENOENT`<br>- `mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f1c...` | Output menunjukkan system call awal untuk menjalankan program `ls`, termasuk setup arsitektur, alokasi memori, dan pemeriksaan akses. Ini menggambarkan bagaimana kernel mempersiapkan eksekusi program secara aman, mencegah akses langsung ke resource. |
-| **Eksperimen 2: Menelusuri System Call File I/O dengan `strace cat /etc/passwd`** | `strace -e trace=open,read,write,close cat /etc/passwd` | - `openat(AT_FDCWD, "/etc/passwd", O_RDONLY) = 3`<br>- `read(3, "root:x:0:0:root:/root:/bin/bash\n", 8192) = 1234`<br>- `write(1, "root:x:0:0:root:/root:/bin/bash\n", 1234) = 1234`<br>- `close(3) = 0` | System call ini menunjukkan siklus lengkap I/O file: membuka file, membaca isi, menulis ke output, dan menutup. Kernel bertindak sebagai mediator untuk memastikan operasi terstruktur dan aman, menghindari akses ilegal ke file sistem. |
-| **Eksperimen 3: Mode User vs Kernel dengan `dmesg`** | `dmesg \| tail -n 10` | - `[ 1234.567] usb 1-1: new high-speed USB device number 2 using xhci_hcd`<br>- `[ 1235.678] usb 1-1: New USB device found, idVendor=1234, idProduct=5678`<br>- `[ 1236.789] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3`<br>- `[ 1237.890] usb 1-1: Product: Example Device`<br>- `[ 1238.901] usb 1-1: Manufacturer: Example Corp`<br>- `[ 1239.012] usb 1-1: SerialNumber: 123456`<br>- `[ 1240.123] usb 1-1: configuration #1 chosen from 1 choice`<br>- `[ 1241.234] input: Example Device as /devices/pci0000:00/0000:00:14.0/usb1/1-1/1-1:1.0/input/input15`<br>- `[ 1242.345] hid-generic 0003:1234:5678.0001: input,hidraw0: USB HID v1.10 Keyboard [Example Device] on usb-0000:00:14.0-1/input0`<br>- `[ 1243.456] usbcore: registered new interface driver usbhid` | Log ini menampilkan aktivitas kernel terkait hardware (misalnya, USB device), berbeda dari output program user yang hanya menampilkan hasil akhir. Ini menunjukkan interaksi kernel dengan driver, menekankan perbedaan mode user (aplikasi) vs kernel (sistem low-level). |
+| Nama User       | Deskripsi                                                                 | Fungsi                                                                 |
+|-----------------|---------------------------------------------------------------------------|------------------------------------------------------------------------|
+| read            | User untuk operasi baca (read) file; sering terkait dengan akses baca sistem. | Mengelola izin baca untuk file dan direktori, memastikan keamanan akses data tanpa modifikasi. |
+| write           | User untuk operasi tulis (write) file; terkait dengan akses tulis.       | Mengontrol izin tulis untuk file, mencegah perubahan tidak sah pada data sistem. |
+| daemon          | User standar untuk menjalankan daemon (proses latar belakang) sistem.     | Menjalankan layanan sistem seperti cron atau syslog tanpa akses root, meningkatkan keamanan. |
+| bin             | User untuk binary executables (program sistem).                          | Mengelola akses ke direktori /bin, tempat executable dasar seperti ls atau cat disimpan. |
+| sys             | User untuk sistem operasi dan komponen inti.                             | Mengontrol akses ke resource sistem seperti /sys, untuk operasi kernel dan hardware. |
+| sync            | User untuk sinkronisasi data (sync operations).                          | Menjalankan perintah sync untuk memastikan data ditulis ke disk, mencegah kehilangan data. |
+| games           | User untuk aplikasi game dan hiburan.                                     | Mengelola akses ke direktori /usr/games, membatasi game agar tidak mengganggu sistem utama. |
+| man             | User untuk manual pages (dokumentasi sistem).                             | Mengontrol akses ke /usr/share/man, tempat halaman manual seperti man syscalls disimpan. |
+| lp              | User untuk line printer (printer).                                        | Mengelola layanan printing, seperti CUPS, untuk akses aman ke perangkat printer. |
+| mail            | User untuk sistem email (mail).                                           | Mengontrol akses ke layanan email seperti sendmail atau postfix, untuk pengiriman pesan. |
+| news            | User untuk news server (berita).                                          | Mengelola akses ke layanan news seperti NNTP, untuk distribusi berita atau RSS. |
+| uucp            | User untuk Unix-to-Unix Copy Protocol (UUCP).                             | Mengontrol transfer file antar sistem Unix, sering digunakan untuk jaringan lama. |
+| proxy           | User untuk proxy server.                                                  | Mengelola akses ke layanan proxy seperti Squid, untuk caching dan filtering web. |
+| www-data        | User untuk web server (seperti Apache atau Nginx).                        | Mengontrol akses ke direktori web (/var/www), memastikan keamanan situs web. |
+| backup          | User untuk operasi backup.                                                | Mengelola akses ke tools backup seperti rsync atau tar, untuk penyimpanan data. |
+| list            | User untuk mailing list.                                                  | Mengontrol akses ke layanan mailing list seperti Mailman, untuk distribusi email grup. |
+| irc             | User untuk Internet Relay Chat (IRC).                                     | Mengelola akses ke server IRC, untuk komunikasi real-time. |
+| gnats           | User untuk GNU Bug Tracking System.                                       | Mengontrol akses ke sistem pelacakan bug, untuk pengelolaan laporan error. |
+| nobody          | User anonim atau tanpa hak istimewa (nobody).                             | Digunakan untuk proses yang tidak memerlukan akses spesifik, meningkatkan keamanan. |
+| systemd-network | User untuk systemd network management.                                    | Mengelola layanan jaringan systemd, seperti konfigurasi IP dan DNS. |
+| systemd-resolve | User untuk systemd DNS resolver.                                          | Mengontrol resolusi DNS melalui systemd-resolved, untuk lookup domain. |
+| messagebus      | User untuk D-Bus message bus.                                             | Mengelola komunikasi antar-proses via D-Bus, untuk integrasi aplikasi. |
+| systemd-timesync| User untuk systemd time synchronization.                                  | Mengontrol sinkronisasi waktu melalui systemd-timesyncd, untuk NTP. |
+| syslog          | User untuk sistem logging (syslog).                                       | Mengelola akses ke layanan logging seperti rsyslog, untuk pencatatan event sistem. |
+| _apt            | User untuk APT package manager.                                           | Mengontrol akses ke operasi package management, seperti update dan install. |
+| uuidd           | User untuk UUID daemon.                                                   | Mengelola pembuatan UUID unik untuk sistem, digunakan dalam database atau file. |
+| tcpdump         | User untuk packet analyzer (tcpdump).                                     | Mengontrol akses ke tools analisis jaringan, untuk monitoring paket. |
+| landscape       | User untuk Canonical Landscape (management tool).                         | Mengelola akses ke layanan monitoring dan manajemen sistem dari Canonical. |
 
 2. ![alt text](screenshots/systemcall.png)
 
