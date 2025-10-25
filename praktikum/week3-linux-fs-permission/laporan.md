@@ -108,9 +108,20 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
+1. **Jelaskan Fungsi Tiap Perintah dan Arti Kolom Permission:**
+   - `pwd`: Menampilkan direktori kerja saat ini.
+   - `ls -l`: Menampilkan isi direktori dalam format detail.
+   - `cd`: Mengubah direktori.
+   - `cat`: Menampilkan isi file.
+   - `chmod`: Mengubah permission file.
+   - `chown`: Mengubah owner dan group file.
+   - Arti kolom permission `rwxr-xr--`:
+     - `rwx`: Owner (read, write, execute).
+     - `r-x`: Group (read, execute; no write).
+     - `r--`: Other (read only; no write/execute).
+     - Total: 754 dalam oktal (rwx=7, r-x=5, r--=4).
+2. analisis peran
+   
 
 ---
 
