@@ -99,7 +99,11 @@ dmesg | head
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![Screenshot hasil](screenshots/linuxfs.png)
+
+![Screenshot hasil](screenshots/linuxfs1.png)
+
+![Screenshot hasil](screenshots/linuxfs3.png)
 
 ---
 
@@ -111,25 +115,33 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum ini.
-
+1. **Pemahaman Perintah Dasar Linux**: Praktikum ini berhasil memperkenalkan penggunaan perintah navigasi seperti `ls`, `pwd`, `cd`, dan `cat` untuk mengelola file dan direktori, serta membaca isi file seperti `/etc/passwd`, yang membantu dalam eksplorasi sistem file Linux.
+2. **Konsep Permission dan Ownership**: Melalui eksperimen dengan `chmod` dan `chown`, saya memahami pentingnya hak akses file untuk keamanan sistem, di mana permission mengontrol akses read/write/execute, sementara ownership menentukan pemilik file, mencegah akses tidak sah.
+3. **Dokumentasi dan Pengelolaan Repositori**: Proses dokumentasi hasil, penyimpanan screenshot, dan commit ke Git repository menunjukkan pentingnya praktik versioning dalam pengembangan, memastikan hasil praktikum terorganisir dan dapat diakses tepat waktu.
+   
 ---
 
 ## Quiz
 1. **Apa fungsi dari perintah `chmod`?**  
-   **Jawaban:** `chmod` digunakan untuk mengubah hak akses (permission) file atau direktori, seperti mengatur siapa yang bisa baca, tulis, atau eksekusi, dalam format oktal (misalnya 755) atau simbolik (misalnya u+rwx).
+   `chmod` digunakan untuk mengubah hak akses (permission) file atau direktori, seperti read, write, dan execute untuk owner, group, dan other.
+
 2. **Apa arti dari kode permission `rwxr-xr--`?**  
-   **Jawaban:**  Ini berarti: owner memiliki baca, tulis, dan eksekusi (rwx); group memiliki baca dan eksekusi (r-x); others hanya memiliki baca (r--). Total 10 karakter, dengan karakter pertama menunjukkan tipe file (misalnya - untuk file biasa).
-3. **Jelaskan perbedaan antara `chown` dan `chmod`.**
-   **Jawaban:**  `chown` mengubah kepemilikan file (owner dan/atau group), sedangkan `chmod` mengubah hak akses (permission) seperti baca, tulis, atau eksekusi. `chown` fokus pada siapa yang memiliki file, sementara `chmod` fokus pada apa yang bisa dilakukan oleh pemilik, grup, atau orang lain.
+   - Owner: read, write, execute (rwx).  
+   - Group: read, execute (r-x).  
+   - Other: read only (r--).  
+   - Ini setara dengan 754 dalam oktal.
+
+3. **Jelaskan perbedaan antara `chown` dan `chmod`.**  
+   `chown` mengubah kepemilikan file (owner dan group), sedangkan `chmod` mengubah hak akses (permission) tanpa mengubah kepemilikan. `chown` fokus pada siapa yang memiliki file, sementara `chmod` fokus pada apa yang bisa dilakukan oleh owner/group/other.
 
 ---
 
 ## Refleksi Diri
-Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
-- Bagaimana cara Anda mengatasinya?  
+1. Apa bagian yang paling menantang minggu ini?
+Bagian yang paling menantang adalah Eksperimen 3, khususnya penggunaan chmod dan chown untuk mengatur permission dan ownership file, karena konsep permission (seperti kode oktal 600) terasa abstrak dan memerlukan pemahaman mendalam tentang keamanan sistem Linux, terutama saat menggunakan sudo untuk mengubah owner.
 
+2. Bagaimana cara Anda mengatasinya?
+Saya mengatasi tantangan ini dengan membaca manual Linux (man chmod dan man chown) untuk memahami sintaks dan contoh, kemudian mencoba perintah secara bertahap di terminal sambil mencatat output sebelum dan sesudah perubahan. Diskusi dengan teman dan referensi buku seperti Operating System Concepts juga membantu memperjelas konsep permission.
 ---
 
 **Credit:**  
