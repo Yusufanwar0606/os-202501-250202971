@@ -105,6 +105,8 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ![Screenshot hasil](screenshots/linuxfs3.png)
 
+![Screenshot hasil](screenshots/linuxfs2.png)
+
 ---
 
 ## Analisis
