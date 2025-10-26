@@ -1,6 +1,6 @@
 
 # Laporan Praktikum Minggu [X]
-Topik: [Tuliskan judul topik, misalnya "Arsitektur Sistem Operasi dan Kernel"]
+Topik: Manajemen File dan Permission di Linux  
 
 ---
 
@@ -123,7 +123,9 @@ Sertakan screenshot hasil percobaan atau diagram:
      - `r--`: Other (read only; no write/execute).
      - Total: 754 dalam oktal (rwx=7, r-x=5, r--=4).
 2. analisis peran
-   
+   - `chmod`: Mengontrol hak akses (read, write, execute) untuk owner, group, dan other. Penting untuk keamanan karena mencegah akses tidak sah, e.g., file sensitif seperti password hanya bisa diakses root.
+   - `chown`: Mengubah kepemilikan file. Berguna untuk delegasi akses atau isolasi, e.g., file sistem dimiliki root untuk mencegah modifikasi oleh user biasa. Kombinasi keduanya memastikan model keamanan berbasis permission Linux (DAC - Discretionary Access Control).
+
 
 ---
 
