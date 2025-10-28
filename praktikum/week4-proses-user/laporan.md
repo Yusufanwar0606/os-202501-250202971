@@ -22,7 +22,24 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 ---
 
 ## Dasar Teori
-Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
+1. Konsep Proses dalam Sistem Operasi
+Proses adalah program yang sedang dieksekusi, dikelola oleh kernel Linux. Setiap proses memiliki PID (Process ID) unik, status (running, sleeping, dll.), dan sumber daya seperti CPU, memori, dan file descriptor.
+Hierarki proses: Dimulai dari proses induk (parent) seperti init atau systemd (PID 1), yang melahirkan proses anak (child). Ini memungkinkan kontrol paralel dan isolasi, mencegah satu proses mengganggu yang lain.
+Teori dasar: Berdasarkan model proses Unix, di mana fork() membuat child process, dan exec() mengganti image proses. Kernel menggunakan scheduler untuk alokasi CPU.
+
+2. Manajemen User dan Hak Akses
+User adalah entitas yang berinteraksi dengan sistem, diidentifikasi oleh UID (User ID) dan GID (Group ID). User root (UID 0) memiliki hak penuh, sementara user biasa dibatasi oleh izin file (rwx untuk read/write/execute).
+Grup: Mekanisme untuk berbagi akses antar user, seperti grup sudo untuk perintah administratif. Prinsip "least privilege" memastikan user hanya akses yang diperlukan.
+Teori dasar: Berdasarkan model keamanan DAC (Discretionary Access Control), di mana owner file mengontrol akses. Linux menggunakan /etc/passwd dan /etc/group untuk penyimpanan data user.
+
+3. Monitoring dan Kontrol Proses
+Monitoring: Menggunakan perintah seperti ps (snapshot statis) dan top (real-time) untuk melihat status proses, termasuk penggunaan sumber daya. Ini membantu debugging dan optimasi performa.
+Kontrol: Melalui sinyal (signals) seperti SIGTERM (terminate) atau SIGKILL (force kill), dikirim oleh kill. Kernel menangani sinyal untuk mengubah status proses.
+Teori dasar: Berdasarkan konsep inter-process communication (IPC) dan scheduling. Kernel Linux (misal, CFS scheduler) mengalokasikan CPU berdasarkan prioritas.
+
+4. Hubungan dengan Keamanan Sistem
+Manajemen user mencegah privilege escalation (peningkatan hak akses ilegal), sementara kontrol proses menghentikan malware atau proses berbahaya.
+Teori dasar: Mengikuti prinsip security by design, dengan isolasi proses melalui namespaces dan cgroups (di systemd). Audit log (misal, via journald) memungkinkan tracking aktivitas.
 
 ---
 
@@ -168,9 +185,11 @@ User `root` adalah superuser dengan UID 0, yang memberikan akses penuh ke semua 
 ---
 
 ## Refleksi Diri
-Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
-- Bagaimana cara Anda mengatasinya?  
+Apa bagian yang paling menantang minggu ini?
+Bagian yang paling menantang adalah menganalisis hierarki proses dengan pstree dan menggambarkannya dalam diagram pohon, karena outputnya kompleks dan sulit dipahami tanpa visualisasi yang jelas, terutama dalam lingkungan WSL yang berbeda dari Linux native.
+
+Bagaimana cara Anda mengatasinya?
+Saya mengatasinya dengan mempelajari output pstree langkah demi langkah, menggunakan kode Mermaid untuk membuat diagram visual, dan merujuk pada dokumentasi Linux serta referensi buku untuk memahami konsep PID dan parent-child relationship. Selain itu, saya bereksperimen ulang di terminal untuk memverifikasi hasil.
 
 ---
 
