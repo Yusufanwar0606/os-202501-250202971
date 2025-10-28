@@ -111,11 +111,32 @@ Teori dasar: Mengikuti prinsip security by design, dengan isolasi proses melalui
 
 ## Kode / Perintah
 Tuliskan potongan kode atau perintah utama:
+ ```bash
+   whoami
+   id
+   groups
+ ```
 ```bash
-uname -a
-lsmod | head
-dmesg | head
+     sudo adduser praktikan
+     sudo passwd praktikan
 ```
+
+```bash
+   ps aux | head -10
+   top -n 1
+```
+```bash
+     sleep 1000 &
+     ps aux | grep sleep
+```
+
+```bash
+     kill <PID>
+```
+
+ ```bash
+   pstree -p | head -20
+   ```
 
 ---
 
