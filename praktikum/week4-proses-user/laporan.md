@@ -116,7 +116,7 @@ dmesg | head
 ---
 
 ## Analisis
-1. 
+1.  hierarki proses dalam bentuk diagram pohon (pstree) di laporan.
    
     ``` bash
     systemd (PID 1)
@@ -155,7 +155,7 @@ dmesg | head
         └── (sd-pam) (PID 781)
     
     ```
-3. **Hubungan antara User Management dan Keamanan Sistem Linux:** Manajemen user di Linux melibatkan pembuatan user, pengaturan password, dan penugasan grup untuk membatasi akses. User `root` memiliki hak penuh, sementara user biasa hanya dapat mengakses file mereka sendiri. Ini mencegah kerusakan sistem oleh malware atau kesalahan user. Grup memungkinkan kontrol akses bersama (misal, grup `sudo` untuk perintah administratif). Dengan demikian, manajemen user menjaga prinsip "least privilege" untuk keamanan, mencegah eskalasi hak akses, dan memungkinkan audit aktivitas.
+2. **Hubungan antara User Management dan Keamanan Sistem Linux:** Manajemen user di Linux melibatkan pembuatan user, pengaturan password, dan penugasan grup untuk membatasi akses. User `root` memiliki hak penuh, sementara user biasa hanya dapat mengakses file mereka sendiri. Ini mencegah kerusakan sistem oleh malware atau kesalahan user. Grup memungkinkan kontrol akses bersama (misal, grup `sudo` untuk perintah administratif). Dengan demikian, manajemen user menjaga prinsip "least privilege" untuk keamanan, mencegah eskalasi hak akses, dan memungkinkan audit aktivitas.
 
 ---
 
