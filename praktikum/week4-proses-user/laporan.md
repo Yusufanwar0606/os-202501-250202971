@@ -116,9 +116,45 @@ dmesg | head
 ---
 
 ## Analisis
-1.
-2.
-
+1. 
+   
+    ``` bash
+    systemd (PID 1)
+    ├── agetty (PID 226)
+    ├── agetty (PID 230)
+    ├── cron (PID 195)
+    ├── dbus-daemon (PID 200)
+    ├── init-systemd(Ub (PID 2)
+    │   ├── SessionLeader (PID 325)
+    │   │   └── Relay(327)(326) (PID 327)
+    │   │       └── bash (PID 327)
+    │   │           └── login (PID 741)
+    │   │               └── bash (PID 791)
+    │   │                   ├── head (PID 1198)
+    │   │                   ├── pstree (PID 1197)
+    │   │                   └── sleep (PID 1190)
+    │   ├── init (PID 7)
+    │   │   └── {init} (PID 8)
+    │   ├── login (PID 328)
+    │   │   └── bash (PID 389)
+    │   └── {init-systemd(Ub} (PID 9)
+    ├── networkd-dispat (PID 205)
+    ├── packagekitd (PID 611)
+    │   ├── {packagekitd} (PID 612)
+    │   └── {packagekitd} (PID 613)
+    ├── polkitd (PID 615)
+    │   ├── {polkitd} (PID 616)
+    │   └── {polkitd} (PID 618)
+    ├── rsyslogd (PID 206)
+    │   ├── {rsyslogd} (PID 221)
+    │   ├── {rsyslogd} (PID 222)
+    │   └── {rsyslogd} (PID 223)
+    ├── systemd (PID 377)
+    │   └── (sd-pam) (PID 378)
+    └── systemd (PID 780)
+        └── (sd-pam) (PID 781)
+    
+    ```
 3. **Hubungan antara User Management dan Keamanan Sistem Linux:** Manajemen user di Linux melibatkan pembuatan user, pengaturan password, dan penugasan grup untuk membatasi akses. User `root` memiliki hak penuh, sementara user biasa hanya dapat mengakses file mereka sendiri. Ini mencegah kerusakan sistem oleh malware atau kesalahan user. Grup memungkinkan kontrol akses bersama (misal, grup `sudo` untuk perintah administratif). Dengan demikian, manajemen user menjaga prinsip "least privilege" untuk keamanan, mencegah eskalasi hak akses, dan memungkinkan audit aktivitas.
 
 ---
