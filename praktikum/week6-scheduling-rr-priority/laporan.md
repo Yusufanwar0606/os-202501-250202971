@@ -42,9 +42,10 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
    - Gunakan *time quantum (q)* = 3.  
    - Hitung *waiting time* dan *turnaround time* untuk tiap proses.  
    - Simulasikan eksekusi menggunakan Gantt Chart (manual atau spreadsheet).  
-     ```
-     | P1 | P2 | P3 | P4 | P1 | P3 | ...
-     0    3    6    9   12   15   18  ...
+     ```bash 
+     | P1 | P2 | P3 | P4 | P1 | P3 | P4 | P4 |
+     0    3    6    9   12   15   18    21   24 
+     
      ```
    - Catat sisa *burst time* tiap putaran.
 
@@ -80,18 +81,33 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 ---
 
 ## Hasil Eksekusi
-Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![Screenshot hasil](screenshots/RR&PRIORITY.png)
+
+![Screenshot hasil](screenshots/RR&PRIORITY1.png)
+
+![Screenshot hasil](screenshots/RR&PRIORITY2.png)
+
 
 ---
 
 ## Analisis
-
+## A. Tabel Perbandingan Efek Quantum
+| Quantum | Average WT | Average TAT | Pengaruh |
+|---------|------------|-------------|----------|
+| 3       | 8,50          | 14,0       | Keseimbangan antara adil dan efisiensi |
 ---
 
+## B. Perbandingan Algoritma RR dan Priority
+| Algoritma          | Avg WT | Avg TAT | Kelebihan                          | Kekurangan                          |
+|--------------------|--------|---------|------------------------------------|-------------------------------------|
+| Round Robin (q=3)  | 8,50      | 14,0    | Adil terhadap semua proses         | Tidak efisien jika quantum tidak tepat; overhead context switch |
+| Priority (Non-Preemptive) | 5.25   | 10.75   | Efisien untuk proses penting       | Potensi starvation pada prioritas rendah |
+
+
+
 ## Kesimpulan
-1. RR dengan q=3 memberikan keseimbangan antara keadilan dan efisiensi, dengan avg WT 4 dan TAT 12.5.
-2. Priority lebih cepat untuk proses penting (avg TAT 10.75), tapi risiko starvation.
+1. RR dengan q=3 memberikan keseimbangan antara keadilan dan efisiensi, dengan avg WT 8,50 dan TAT 14,0.
+2. Priority lebih cepat untuk proses penting (avg TAT 10.75), tapi berisiko terjadinya starvation.
 3. Variasi q mempengaruhi performa: q kecil meningkatkan keadilan tapi overhead; q besar seperti FCFS.
 4. Kedua algoritma cocok untuk sistem berbeda: RR untuk interaktif, Priority untuk real-time.
 ---
