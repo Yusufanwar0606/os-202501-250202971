@@ -124,9 +124,10 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 
 ## Refleksi Diri
 Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
-- Bagaimana cara Anda mengatasinya?  
-
+- Apa bagian yang paling menantang minggu ini?
+  **Jawaban:** Simulasi manual Round Robin, terutama melacak sisa burst time dan urutan eksekusi dengan arrival time yang berbeda.
+- Bagaimana cara Anda mengatasinya?
+  **Jawaban:** Saya menggambar Gantt chart step-by-step di kertas, mencatat waktu mulai dan sisa burst untuk setiap proses, serta memeriksa ulang logika antrian. Menggunakan spreadsheet sederhana juga membantu menghitung completion time secara sistematis. 
 ---
 
 **Credit:**  
