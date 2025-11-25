@@ -14,14 +14,25 @@ Topik: Sinkronisasi Proses dan Masalah Deadlock
 
 ---
 
-## Tujuan
-Setelah menyelesaikan tugas ini, mahasiswa mampu:
+## Pendahuluan
+Tujuan praktikum ini adalah untuk:
+
 1. Mengidentifikasi empat kondisi penyebab deadlock (mutual exclusion, hold and wait, no preemption, circular wait).  
 2. Menjelaskan mekanisme sinkronisasi menggunakan semaphore atau monitor.  
 3. Menganalisis dan memberikan solusi untuk kasus deadlock.  
 4. Berkolaborasi dalam tim untuk menyusun laporan analisis.  
 5. Menyajikan hasil studi kasus secara sistematis.  
 
+---
+
+## Metode
+
+Metode yang digunakan adalah simulasi berbasis studi kasus **Dining Philosophers** dengan langkah-langkah sebagai berikut:
+
+1.  **Eksperimen 1 (Versi Deadlock):** Implementasi skenario dasar di mana setiap Philosopher (*proses*) mengambil garpu kiri, kemudian garpu kanan. Simulasi dijalankan untuk mengamati dan mengidentifikasi kondisi deadlock.
+2.  **Eksperimen 2 (Versi Fixed):** Memodifikasi skenario dengan menambahkan mekanisme **sinkronisasi** menggunakan **semaphore** untuk membatasi jumlah Philosopher yang dapat berada di "ruang makan" (*Critical Section*) secara bersamaan. Solusi yang dipilih adalah **membatasi maksimal $N-1$ Philosopher** (4 dari 5) yang dapat mengambil garpu.
+3.  **Eksperimen 3 (Analisis):** Menganalisis bagaimana solusi semaphore pada Eksperimen 2 berhasil mencegah deadlock dengan memutus salah satu dari empat kondisi penyebabnya.
+  
 ---
 
 ## Dasar Teori
@@ -200,9 +211,15 @@ Solusi umum untuk menghilangkan deadlock:
 ---
 
 ## Hasil Eksekusi
-Sertakan screenshot hasil percobaan atau diagram:
-![alt text](/praktikum/week7-concurrency-deadlock/screenshots/deadlock1.jpg)
-![alt text](/praktikum/week7-concurrency-deadlock/screenshots/semaphore.jpg)
+| Eksperimen | Skenario | Hasil Kunci | Catatan |
+| :--- | :--- | :--- | :--- |
+| **Eksperimen 1** | Tanpa Sinkronisasi | Terjadi **Deadlock** | Semua Philosopher mengambil garpu kiri, lalu menunggu garpu kanan. Terjadi *Circular Wait* dan semua proses macet. |
+| **Eksperimen 2** | Dengan Semaphore (N-1) | **Deadlock Terhindari** | Proses makan-dan-berpikir berjalan lancar. Tidak ada proses yang terblokir secara permanen. |
+
+> **Eksperimen 1 - Versi Deadlock:**
+> ![alt text](/praktikum/week7-concurrency-deadlock/screenshots/deadlock1.jpg)
+> **Eksperimen 2 - Versi Fixed:**
+> ![alt text](/praktikum/week7-concurrency-deadlock/screenshots/semaphore.jpg)
 
 --
 ## Analisis
@@ -248,19 +265,26 @@ Eksperimen 3
 ## Quiz
 1. Sebutkan empat kondisi utama penyebab deadlock.  
    *Jawaban:* 
- Empat kondisi utama penyebab deadlock adalah:  
    - *Mutual Exclusion* adalah setiap sumber daya hanya dapat digunakan oleh satu proses pada satu waktu.  
    - *Hold and Wait* adalah proses menahan satu sumber daya sambil menunggu sumber daya lain yang dipegang oleh proses lain.  
    - *No Preemption* adalah sumber daya tidak dapat direbut paksa dari proses yang memegangnya; hanya dapat dilepas secara sukarela.  
    - *Circular Wait*: Terbentuknya siklus tunggu di mana setiap proses menunggu sumber daya yang dipegang oleh proses berikutnya dalam rantai
 
 2. Mengapa sinkronisasi diperlukan dalam sistem operasi?
-   *Jawaban:*  Sinkronisasi diperlukan dalam sistem operasi untuk mencegah kondisi balapan (race condition) yang dapat menyebabkan inkonsistensi data, memastikan akses eksklusif ke sumber daya bersama, menghindari deadlock, dan menjaga integritas operasi dalam lingkungan multi-proses atau multi-thread, sehingga sistem berjalan stabil dan efisien.
+   *Jawaban:*  
+   - Mencegah Kondisi Balapan: Memastikan proses tidak mengakses data bersama pada saat yang sama, menghindari hasil yang tidak konsisten.
+   - Pengecualian Bersama: Hanya mengizinkan satu proses di bagian kritis pada satu waktu.
+   - Koordinasi Proses: Memungkinkan proses menunggu kondisi tertentu (misalnya, produsen-konsumen).
+   - Pencegahan Kebuntuan: Menghindari penantian melingkar dan pemblokiran tak terbatas dengan menggunakan penanganan sumber daya yang tepat.
+   - Komunikasi Aman: Memastikan data/pesan antar proses dikirim, diterima, dan diproses secara berurutan.
+   - Keadilan: Mencegah kelaparan dengan memberikan semua proses akses yang adil terhadap sumber daya.
 
 3. Jelaskan perbedaan antara *semaphore* dan *monitor*.   
    *Jawaban:*
-   - *Semaphore* adalah mekanisme sinkronisasi tingkat rendah yang menggunakan variabel counter untuk mengontrol akses ke sumber daya bersama, dengan operasi dasar seperti wait (mengurangi counter) dan signal (meningkatkan counter). Ia memerlukan pengelolaan manual oleh programmer dan rentan terhadap kesalahan seperti deadlock jika tidak digunakan dengan benar.  
-   - *Monitor* adalah konstruksi sinkronisasi tingkat tinggi yang menggabungkan data bersama dengan prosedur yang mengaksesnya, menggunakan lock implisit dan variabel kondisi (condition variables) untuk menunggu dan memberi sinyal. Ia lebih aman dan mudah digunakan karena sinkronisasi ditangani secara otomatis, mengurangi risiko kesalahan programmer. Monitor lebih abstrak dan terstruktur dibandingkan semaphore. 
+   - Semaphore adalah variabel penghitung primitif (tingkat rendah) yang digunakan untuk sinkronisasi. Ia hanya memiliki dua operasi atomik (wait() dan signal()). Karena fleksibel, programmer harus sangat berhati-hati menggunakannya; lupa memanggil signal dapat menyebabkan deadlock.
+   - Monitor adalah struktur bahasa tingkat tinggi (tingkat atas) yang menggabungkan data bersama dan prosedur yang mengoperasikannya. Keunggulannya adalah ia secara otomatis menjamin mutual exclusion (hanya satu proses yang aktif di dalamnya). Hal ini menjadikannya lebih aman dan kurang rawan kesalahan dibandingkan semaphore.
+  
+
 
 ---
 
