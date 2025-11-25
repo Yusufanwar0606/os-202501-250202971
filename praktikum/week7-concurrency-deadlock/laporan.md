@@ -6,10 +6,10 @@ Topik: Sinkronisasi Proses dan Masalah Deadlock
 
 ## Identitas
 - *Nama*  :
-1. M. Habibi Nur Ramadhan (250202949)
-2. Fatkhurrohman Gilang Ramadhan (250202985)
-3. Farhan Ramdhani (250202938)
-4. Yusuf Anwar (250202971)
+1. M. Habibi Nur Ramadhan (250202949) Ketua
+2. Fatkhurrohman Gilang Ramadhan (250202985) Implementasi 
+3. Farhan Ramdhani (250202938) Analisis
+4. Yusuf Anwar (250202971) Dokumentasi
 - *Kelas* : 1IKRB
 
 ---
