@@ -5,16 +5,18 @@ Topik: [Tuliskan judul topik, misalnya "Arsitektur Sistem Operasi dan Kernel"]
 ---
 
 ## Identitas
-- **Nama**  : [Nama Mahasiswa]  
-- **NIM**   : [NIM Mahasiswa]  
-- **Kelas** : [Kelas]
-
+- **Nama**  : Yusuf Anwar
+- **NIM**   : 250202971
+- **Kelas** : 1IKRB
 ---
 
 ## Tujuan
-Tuliskan tujuan praktikum minggu ini.  
-Contoh:  
-> Mahasiswa mampu menjelaskan fungsi utama sistem operasi dan peran kernel serta system call.
+Setelah menyelesaikan tugas ini, mahasiswa mampu:
+1. Membuat program sederhana untuk mendeteksi deadlock.  
+2. Menjalankan simulasi deteksi deadlock dengan dataset uji.  
+3. Menyajikan hasil analisis deadlock dalam bentuk tabel.  
+4. Memberikan interpretasi hasil uji secara logis dan sistematis.  
+5. Menyusun laporan praktikum sesuai format yang ditentukan.
 
 ---
 
