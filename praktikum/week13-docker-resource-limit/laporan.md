@@ -49,14 +49,15 @@ Topik: Docker – Resource Limit (CPU & Memori)
    - Tulis `Dockerfile` untuk menjalankan program uji.
    - Build image:
      ```bash
-     docker build -t week13-resource-limit .
+     docker build -t lat-resource .
+
      ```
 
 4. **Menjalankan Container Tanpa Limit**
 
    - Jalankan container normal:
      ```bash
-     docker run --rm week13-resource-limit
+     docker run --rm lat-resource
      ```
    - Catat output/hasil pengamatan.
 
@@ -64,7 +65,7 @@ Topik: Docker – Resource Limit (CPU & Memori)
 
    Jalankan container dengan batasan resource (contoh):
    ```bash
-   docker run --rm --cpus="0.5" --memory="256m" week13-resource-limit
+   docker run --rm --cpus="0.5" --memory="256m" lat-resource
    ```
    Catat perubahan perilaku program (mis. lebih lambat, error saat memori tidak cukup, dll.).
 
