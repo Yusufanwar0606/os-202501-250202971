@@ -1,5 +1,5 @@
 
-# Laporan Praktikum Minggu [X]
+# Laporan Praktikum Minggu [5]
 Penjadwalan CPU – FCFS dan SJF
 
 ---

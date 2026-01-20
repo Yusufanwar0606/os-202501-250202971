@@ -1,5 +1,5 @@
 
-# Laporan Praktikum Minggu [X]
+# Laporan Praktikum Minggu [6]
 Penjadwalan CPU – Round Robin (RR) dan Priority Scheduling 
 
 ---

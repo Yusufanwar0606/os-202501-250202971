@@ -1,5 +1,5 @@
 
-# Laporan Praktikum Minggu [X]
+# Laporan Praktikum Minggu [2]
 **Topik: struktur system call dan fungsi Kernel**
 
 ---

@@ -1,5 +1,5 @@
 
-# Laporan Praktikum Minggu [X]
+# Laporan Praktikum Minggu [11]
 Topik: Simulasi dan Deteksi Deadlock
 
 
