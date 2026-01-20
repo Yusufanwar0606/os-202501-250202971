@@ -20,7 +20,6 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 5. Mengunggah kode dan laporan ke Git repository dengan rapi dan tepat waktu.
 ---
 
-## Dasar Teori
 ## B. Dasar Teori
 
 ### 1. Penjadwalan CPU
